@@ -1,0 +1,5 @@
+flask
+hindsight-client
+certifi
+python-dotenv
+groq

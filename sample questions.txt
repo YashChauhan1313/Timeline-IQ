@@ -1,0 +1,36 @@
+SAMPLE QUESTIONS — Timeline IQ
+(Tailored to events.py: Samsung Galaxy S/Z/Book/Tab lines and Apple iPhone/MacBook/iPad
+lines, 2020-2026)
+
+General / cross-category
+- How has Samsung evolved across phones, laptops, and tablets?
+- How has Apple's product lineup changed over the past two years?
+- Compare Samsung's tablet strategy to Apple's.
+
+Pricing-focused
+- What's the starting price for Samsung's latest phone lineup?
+- How does Apple's laptop pricing compare to its tablet pricing?
+- Has Samsung's flagship phone gotten more expensive over time?
+
+Category-specific
+- What's new in Samsung's laptop lineup?
+- What's new in Apple's tablet lineup?
+- Summarize Apple's phone launches over the last two years.
+- How has Samsung's tablet strategy evolved?
+
+Strategy / narrative (best for showing off reflect())
+- What does Samsung's recent lineup suggest about their AI strategy?
+- What's the biggest theme across Samsung's 2025-2026 launches?
+- If you had to brief an executive on Apple in 60 seconds, what would you say?
+
+Compare mode (LLM analyst, both companies — needs "compare" mode selected)
+- Which company launched more devices in 2025?
+- Compare Samsung's and Apple's pricing across categories.
+- Who has moved faster on AI features, Samsung or Apple?
+- Compare how often each company refreshes its laptop lineup.
+
+Demo tip: ask a broad one first ("How has Samsung evolved...") to show the full
+synthesized narrative, then a narrower follow-up ("What about just laptops?") to
+show it can scope down. Then switch to compare mode for a head-to-head question —
+that three-step arc (broad -> narrow -> compare) is what sells the memory story
+to judges.
