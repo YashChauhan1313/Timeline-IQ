@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline IQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = { theme: { extend: { fontFamily: {
+    display: ['Fraunces', 'serif'],
+    sans: ['"IBM Plex Sans"', 'sans-serif'],
+    mono: ['"IBM Plex Mono"', 'monospace']
+  } } } }
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body data-brand="samsung" class="min-h-screen overflow-x-hidden bg-[#0b0c10] font-sans text-zinc-100 antialiased">
+  <div class="blobs" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <header class="pb-10 pt-20 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-zinc-300 backdrop-blur">
+        <i data-lucide="brain" class="accent-text h-3.5 w-3.5"></i> Memory powered by Hindsight
+      </div>
+      <h1 class="mt-6 font-display text-6xl font-bold leading-[1.02] tracking-tight sm:text-8xl">
+        <span class="gradient-text">Timeline IQ</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
+        A competitive intelligence agent that remembers every move Samsung and Apple make, and turns it into strategic insight.
+      </p>
+
+      <div id="brand-switch" class="switch relative mt-10 inline-flex rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur">
+        <span id="thumb" class="absolute left-1 top-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-[var(--accent)] shadow-[0_0_32px_var(--glow)] transition-all duration-500"></span>
+        <button class="switch-btn active relative z-10 px-8 py-2.5 text-sm font-medium" data-company="samsung">Samsung</button>
+        <button class="switch-btn relative z-10 px-8 py-2.5 text-sm font-medium" data-company="apple">Apple</button>
+      </div>
+    </header>
+
+    <section class="mb-12 grid grid-cols-3 gap-3 sm:gap-5">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
+        <div id="stat-events" class="font-display text-4xl font-bold">0</div>
+        <div class="mt-1 text-xs text-zinc-500">events remembered</div>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
+        <div id="stat-cats" class="font-display text-4xl font-bold">0</div>
+        <div class="mt-1 text-xs text-zinc-500">device categories</div>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
+        <div id="stat-since" class="font-display text-4xl font-bold">-</div>
+        <div class="mt-1 text-xs text-zinc-500">tracked since</div>
+      </div>
+    </section>
+
+    <main class="grid gap-8 pb-24 lg:grid-cols-[1fr_1.15fr]">
+      <section>
+        <h2 class="mb-6 flex items-center gap-2 text-sm font-semibold text-zinc-400">
+          <i data-lucide="history" class="h-4 w-4"></i> Timeline
+        </h2>
+        <ol id="timeline" class="relative space-y-4 border-l border-white/10 pl-6"></ol>
+      </section>
+
+      <section class="self-start rounded-3xl border border-white/10 bg-white/[0.05] p-7 shadow-2xl backdrop-blur-xl lg:sticky lg:top-8">
+        <h2 class="mb-5 flex items-center gap-2 text-sm font-semibold text-zinc-400">
+          <i data-lucide="sparkles" class="accent-text h-4 w-4"></i> Ask Timeline IQ
+        </h2>
+        <div id="chips" class="mb-5 flex flex-wrap gap-2"></div>
+        <form id="ask-form" class="mb-6 flex flex-wrap gap-2">
+  <select id="mode" class="rounded-xl border border-white/10 bg-black/30 px-3 py-3 text-sm text-zinc-200 outline-none focus:border-[var(--accent)]">
+    <option value="reflect" class="bg-zinc-900">Hindsight reflect</option>
+    <option value="llm" class="bg-zinc-900">LLM analyst</option>
+    <option value="compare" class="bg-zinc-900">LLM: compare both</option>
+  </select>
+  <input id="query" type="text" placeholder="Ask how pricing, launches, or strategy have changed"
+    class="min-w-[200px] flex-1 rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm placeholder-zinc-500 outline-none transition focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--glow)]" />
+  <button type="submit" class="ask-btn rounded-xl bg-[var(--accent)] px-6 py-3 text-sm font-semibold transition hover:brightness-110">Ask</button>
+</form>
+        <div id="answer" class="prose prose-invert prose-sm max-w-none overflow-x-auto">
+          <p class="text-zinc-500">Pick a question above, or type your own.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+:root, body[data-brand="samsung"] {
+  --accent: #3b82f6; --glow: rgba(59,130,246,.55); --accent-contrast: #fff;
+  --b1: #1d4ed8; --b2: #06b6d4; --b3: #6366f1;
+}
+body[data-brand="apple"] {
+  --accent: #f5f5f7; --glow: rgba(245,245,247,.4); --accent-contrast: #0b0c10;
+  --b1: #52607a; --b2: #7c6cc4; --b3: #94a3b8;
+}
+
+.blobs { position: fixed; inset: 0; overflow: hidden; z-index: 0; }
+.blob { position: absolute; border-radius: 50%; filter: blur(110px); opacity: .5; transition: background-color 1.2s ease; }
+.b1 { width: 520px; height: 520px; top: -140px; left: -120px; background-color: var(--b1); }
+.b2 { width: 480px; height: 480px; top: 20%; right: -160px; background-color: var(--b2); }
+.b3 { width: 420px; height: 420px; bottom: -160px; left: 30%; background-color: var(--b3); }
+
+.gradient-text { background: linear-gradient(120deg, #fff 25%, var(--accent) 65%, var(--b2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.accent-text { color: var(--accent); }
+.ask-btn { color: var(--accent-contrast); }
+.switch-btn { color: #8b8e98; transition: color .4s; }
+.switch-btn.active { color: var(--accent-contrast); }
+
+.shimmer { background: linear-gradient(90deg, rgba(255,255,255,.05) 25%, rgba(255,255,255,.14) 50%, rgba(255,255,255,.05) 75%); background-size: 200% 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .b1 { animation: drift 18s ease-in-out infinite alternate; }
+  .b2 { animation: drift 22s ease-in-out infinite alternate-reverse; }
+  .b3 { animation: drift 26s ease-in-out infinite alternate; }
+  .event-card { animation: cardIn .6s ease both; }
+  .fade-in { animation: cardIn .5s ease both; }
+  .shimmer { animation: shimmer 1.4s linear infinite; }
+}
+@keyframes drift { to { transform: translate(60px, 40px) scale(1.15); } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
